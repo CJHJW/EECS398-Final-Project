@@ -1,6 +1,6 @@
 ---
 layout: default
-title: EECS398 Final Project
+title: EECS398 Practical Data Science - University of Michigan
 ---
 
 # 🧠 EECS398 Final Project Report
@@ -9,16 +9,17 @@ Welcome to my final machine learning project report for EECS398.
 
 ## 📌 Project Overview
 
-- Predicting win rates in League of Legends
+- Predicting win rates in League of Legends Competition
 - Baseline model: Logistic Regression
 - Final model: Random Forest with hyperparameter tuning
 
 ## 🔍 Contents
 
-- [Model Comparison](#model-comparison)
-- [Feature Engineering](#feature-engineering)
-- [Visualizations](#visualizations)
-- [Conclusion](#conclusion)
+- [Introduction](#1.introduction)
+- [Data Cleaning and Exploratory Data Analysis](#2.data_cleaning_and_analysis)
+- [Framing a Prediction Problem](#3.problem_framing)
+- [Baseline Model](#4.baseline_model)
+- [Final Model](#5.final_model)
 
 ## 📊 Model Comparison
 
