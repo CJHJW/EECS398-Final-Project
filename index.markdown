@@ -1,6 +1,7 @@
 ---
-layout: default
+layout: home
 title: EECS398 Practical Data Science - University of Michigan
+description: Final Data science project report using Jekyll and GitHub.
 ---
 
 # 🧠 EECS398 Final Project Report
