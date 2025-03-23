@@ -1,3 +1,6 @@
 title: EECS398 Final Project
 description: A machine learning report predicting League of Legends win rates.
 theme: minima
+
+baseurl: "/EECS398-Final-Project"
+url: "https://CJHJW.github.io"
