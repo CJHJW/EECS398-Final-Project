@@ -30,7 +30,7 @@ This makes side selection a strategic tool — a subtle but important factor tha
 
 In practice, **Blue Side teams consistently perform better**. One contributing factor is the **camera perspective advantage**: although both sides appear symmetrical, the Blue side benefits from a slight downward tilt in the in-game camera. This offers a clearer view of flanks, jungle movements, and overall map activity — making it easier to react and make informed decisions. (Source: [Is red stronger than blue in League of Legends? - Eloking](https://eloking.com/blog/is-red-stronger-than-blue-in-lol#:~:text=The%20Blue%20Side%20team%20has,movements%20from%20the%20Red%20Side.))
 
-In the analysis, the project uses match data to explore the question:  
+To better understand **side selection privilege**, this project analyzes match data to explore the question:  
 **How does side selection (🔵 Blue vs. 🔴 Red) impact team performance?**
 
 
