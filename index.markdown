@@ -3,11 +3,11 @@ layout: default
 title: EECS398 Practical Data Science - University of Michigan
 ---
 
-# 🧠 EECS398 Final Project Report
+# 🎮 Forecasting Victory: 2024 League of Legends Worlds Matches Predictions
+This data science project explores 2024 League of Legends match data from [Oracle's Elixir](https://oracleselixir.com/), focusing on how in-game resources influence victory and how side selection (🔵 Blue vs. 🔴 Red) impacts team performance. Through a combination of statistical analysis and machine learning, the project ultimately builds a predictive model to forecast match outcomes.
 
-Welcome to my final machine learning project report for EECS398.
 
-## 📌 Project Overview
+## Introduction
 
 - Predicting win rates in League of Legends Competition
 - Baseline model: Logistic Regression
