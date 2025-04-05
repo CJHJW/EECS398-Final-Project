@@ -1,11 +1,11 @@
+<head>
+  <link rel="stylesheet" href="/assets/table.css">
+</head>
+
 ---
 layout: default
 title: EECS398 Practical Data Science - University of Michigan
 ---
-
-<head>
-  <link rel="stylesheet" href="/assets/table.css">
-</head>
 
 # 🎮 **Forecasting Victory: 2024 League of Legends Worlds Matches Predictions**
 This data science project explores **2024 League of Legends match data** from [Oracle's Elixir](https://oracleselixir.com/), focusing on **how in-game resources influence victory** and **how side selection (🔵 Blue vs. 🔴 Red) impacts team performance**. Through a combination of statistical analysis and machine learning, the project ultimately builds a predictive model to forecast match outcomes.
@@ -112,6 +112,7 @@ This transformation allows easier logical filtering and improves clarity in visu
 
 #### **Dateset overview**
 Below is a preview of the dataset after cleaning  
+
 Now, the dataset contains **16774 rows** and **16 columns**  
 
 <div class="table-wrapper" markdown="block">
