@@ -1,7 +1,3 @@
-<head>
-  <link rel="stylesheet" href="/assets/table.css">
-</head>
-
 ---
 layout: default
 title: EECS398 Practical Data Science - University of Michigan
@@ -114,6 +110,10 @@ This transformation allows easier logical filtering and improves clarity in visu
 Below is a preview of the dataset after cleaning  
 
 Now, the dataset contains **16774 rows** and **16 columns**  
+
+<head>
+  <link rel="stylesheet" href="/assets/table.css">
+</head>
 
 <div class="table-wrapper" markdown="block">
 
