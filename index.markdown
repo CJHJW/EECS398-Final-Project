@@ -109,9 +109,7 @@ This transformation allows easier logical filtering and improves clarity in visu
 Below is a preview of the dataset after cleaning  
 Now, the dataset contains **16774 rows** and **16 columns**  
 
-{::nomarkdown}
-<div class="table-wrapper">
-{:/}
+<div style="overflow-x: auto;">
 
 | | result | league | side | firstblood | firstdragon | firstbaron | firsttower | firstmidtower | firsttothreetowers | golddiffat10 | golddiffat15 | golddiffat20 | xpdiffat10 | xpdiffat15 | xpdiffat20 | time_label |
 |---:|---------:|:---------|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|:-------------|
@@ -121,9 +119,7 @@ Now, the dataset contains **16774 rows** and **16 columns**
 | 33 |        0 | TSC      | Red    |            1 |             1 |            1 |            1 |               1 |                    1 |             88 |             75 |           -777 |         -625 |        -1092 |        -2722 | 35-40(mins)  |
 | 34 |        1 | TSC      | Blue   |            0 |             1 |            1 |            0 |               0 |                    0 |          -2583 |           -561 |          -1528 |        -1718 |          410 |         -722 | 30-35(mins)  |
 
-{::nomarkdown}
 </div>
-{:/}
 
 ### Univariate Analysis
 
