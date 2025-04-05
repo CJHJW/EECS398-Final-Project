@@ -646,4 +646,10 @@ table td {
   color: #099;
 }
 
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
 /*# sourceMappingURL=main.css.map */
