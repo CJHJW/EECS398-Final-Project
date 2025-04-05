@@ -109,7 +109,7 @@ This transformation allows easier logical filtering and improves clarity in visu
 Below is a preview of the dataset after cleaning  
 Now, the dataset contains **16774 rows** and **16 columns**  
 
-<div class="table-wrapper" markdown="block">
+<div  style="overflow-x: scroll;">
 
 | | result | league | side | firstblood | firstdragon | firstbaron | firsttower | firstmidtower | firsttothreetowers | golddiffat10 | golddiffat15 | golddiffat20 | xpdiffat10 | xpdiffat15 | xpdiffat20 | time_label |
 |---:|---------:|:---------|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|:-------------|
