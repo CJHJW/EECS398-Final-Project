@@ -80,6 +80,22 @@ The `gamelength` ranges from 1143 to 3482 seconds. Below shows the distribution 
         frameborder="0">
 </iframe>
 
+Instead of focusing on specific gamelength in seconds, we care more about **the relationship between general time period in minutes and other features**. So `gamelength` needs to be categorized/labeled.  
+
+Below shows the result of categorizing:  
+| Time Period | Count |
+|----------|----------|
+| 30-35(mins) | 5522 |
+| 25-30(mins) | 5348 |
+| 35-40(mins) | 2714 |
+| <=25(mins) | 1786 |
+| >=40(mins) | 1404 |
+<iframe src="assets/gameduration_hist.html" 
+        width="100%" 
+        height="600" 
+        frameborder="0">
+</iframe>
+
 #### Recategorize result as win
 
 ### Univariate Analysis
