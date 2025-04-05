@@ -124,10 +124,12 @@ Below is a preview of the dataset after cleaning
 
 ### **Univariate Analysis**
 
-Two plots below show the distribution of XP difference at 10 minutes for red side and blue side teams:  
-🔴 For red side teams, 95% of XP differences range from -2129 to 1903, with a median of -63.  
-🔵 For blue side teams, 95% of XP differences range from -1903 to 2129, with a median of 63.  
-These results suggest that the blue side has a slight advantage in XP gain during the early game, likely contributing to better early-game momentum.  
+Two plots below show the **distribution of XP difference at 10 minutes** for red side and blue side teams:  
+
+🔴 For red side teams, 95% of XP differences range from **-2129 to 1903**, with a median of **-63**.  
+🔵 For blue side teams, 95% of XP differences range from **-1903 to 2129**, with a median of **63**.  
+
+These results suggest that **the blue side has a slight advantage in XP gain during the early game**, likely contributing to better early-game momentum.  
 
 <iframe src="assets/xp10_red.html" 
         width="120%" 
@@ -140,6 +142,39 @@ These results suggest that the blue side has a slight advantage in XP gain durin
         height="450" 
         frameborder="0">
 </iframe>
+
+### **Bivariate Analysis**
+
+#### **Win Rate for each side and firstblood**
+
+The plot below shows the win rates based on **team side** (🔵 blue vs 🔴 red) and **whether the team secured first blood**:  
+
+Teams that secured first blood had a win rate approximately **18.6% higher** than those that did not.  
+🔵 Blue side teams showed an average **4.9% higher** win rate compared to 🔴 red side teams.  
+
+These insights highlight the strategic importance of early-game performance (first blood) and support the observed advantage of blue side teams.  
+
+<iframe src="assets/win_rate_blood.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
+
+#### **Win Rate for each side and firstdragon**
+
+The plot below shows the win rates based on **team side** (🔵 blue vs 🔴 red) and **whether the team secured first dragon**:  
+
+Teams that secured first dragon had a win rate approximately **15.6% higher** than those that did not.  
+🔵 Blue side teams showed an average **9.1% higher** win rate compared to 🔴 red side teams.  
+
+These insights highlight the strategic importance of early-game performance (first dragon) and support the observed advantage of blue side teams.  
+
+<iframe src="assets/win_rate_dragon.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
+
 
 ## 📊 Model Comparison
 
