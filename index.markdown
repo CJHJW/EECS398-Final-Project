@@ -187,7 +187,7 @@ Key insights:
 
 <iframe src="assets/win_rate_side_tower.html" 
         width="200%" 
-        height="450" 
+        height="400" 
         frameborder="0">
 </iframe>
 
