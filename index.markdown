@@ -38,8 +38,6 @@ To better understand **side selection privilege**, this project analyzes match d
 
 Below lists the used features and their description:  
 
-<div class="table-wrapper" markdown="block">
-
 | Features | Description |
 |----------|----------|
 | result | 1(Win), 0(Lose) |
@@ -55,7 +53,6 @@ Below lists the used features and their description:
 | golddiffat(10/15/20) | Gold difference between two teams at 10/15/20 minutes |
 | xpdiffat(10/15/20) | XP difference between two teams at 10/15/20 mintues |
 
-</div>
 
 
 ## **Data Cleaning and Exploratory Data Analysis**
@@ -117,6 +114,7 @@ This transformation allows easier logical filtering and improves clarity in visu
 Below is a preview of the dataset after cleaning  
 Now, the dataset contains **16774 rows** and **16 columns**  
 
+<div class="table-wrapper" markdown="block">
 
 | | result | league | side | firstblood | firstdragon | firstbaron | firsttower | firstmidtower | firsttothreetowers | golddiffat10 | golddiffat15 | golddiffat20 | xpdiffat10 | xpdiffat15 | xpdiffat20 | time_label |
 |---:|---------:|:---------|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|:-------------|
@@ -125,6 +123,8 @@ Now, the dataset contains **16774 rows** and **16 columns**
 | 32 |        1 | TSC      | Blue   |            0 |             0 |            0 |            0 |               0 |                    0 |            -88 |            -75 |            777 |          625 |         1092 |         2722 | 35-40(mins)  |
 | 33 |        0 | TSC      | Red    |            1 |             1 |            1 |            1 |               1 |                    1 |             88 |             75 |           -777 |         -625 |        -1092 |        -2722 | 35-40(mins)  |
 | 34 |        1 | TSC      | Blue   |            0 |             1 |            1 |            0 |               0 |                    0 |          -2583 |           -561 |          -1528 |        -1718 |          410 |         -722 | 30-35(mins)  |
+
+</div>
 
 ### Univariate Analysis
 
