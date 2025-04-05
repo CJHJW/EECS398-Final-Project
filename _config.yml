@@ -4,6 +4,3 @@ theme: minima
 
 baseurl: "/EECS398-Final-Project"
 url: "https://CJHJW.github.io"
-
-include:
-  - assets/table.css
