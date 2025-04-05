@@ -52,9 +52,9 @@ Below lists the used features and their description:
 
 ## **Data Cleaning and Exploratory Data Analysis**
 
-### Data Cleaning
+### **Data Cleaning**
 
-#### Extract team data and target columns
+#### **Extract team data and target columns**
 - Selected only the team-level records, excluding individual player-level rows  
 - Extracted the key features listed in the previous section
 
@@ -62,14 +62,19 @@ After filtering and selection, the dataset contains:
 - **19596 rows (2 teams × 9798 matches)**  
 - **16 columns** (side, result, objectives, and performance features, etc.)  
 
-#### Check and modify NaN
-The NaN check revealed that at least **2,822** team records contain incomplete data. Since filling in simulated values wouldn’t make sense in a competitive esports context—and the missing data accounts for only **~15%** of the entire dataset—**dropping the rows with NaN values** is a reasonable and efficient solution.  
+#### **Check and modify NaN**
+Below shows the result of Null value checking. It revealed that at least **2,822** team records contain incomplete data. Since filling in simulated values wouldn’t make sense in a competitive esports context—and the missing data accounts for only **~15%** of the entire dataset—**dropping the rows with NaN values** is a reasonable and efficient solution. After deleting NaN data, the dataset contains:  
+- **16774 rows (2 teams × 8387 matches)**
+- **16 columns**  
+
+Losing only **~15%** data is acceptable  
 <p align="center">
   <img src="image/NaN Checking.png" alt="NaN Checking" width="200"/>
 </p>
 
-#### Categorize Gamelength
-
+#### **Categorize `Gamelength`**
+The `gamelength` ranges from 1143 to 3482 seconds. Below shows the distribution of `gamelength`:  
+[Distribution of gamelength](image/gamelength_hist.html)
 
 #### Recategorize result as win
 
