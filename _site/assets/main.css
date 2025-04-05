@@ -648,8 +648,6 @@ table td {
 
 .table-wrapper {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */
