@@ -186,10 +186,12 @@ Key insights:
 - 🔵 Blue side consistently gains slightly higher win rates from each objective compared to 🔴 red side.
 
 <iframe src="assets/win_rate_side_tower.html" 
-        width="1000" 
+        width="900" 
         height="400" 
         frameborder="0">
 </iframe>
+
+#### **Difference of Gold and XP at 10 mintues under each game length**
 
 
 ## 📊 Model Comparison
