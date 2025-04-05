@@ -6,7 +6,7 @@ title: EECS398 Practical Data Science - University of Michigan
 # 🎮 **Forecasting Victory: 2024 League of Legends Worlds Matches Predictions**
 This data science project explores **2024 League of Legends match data** from [Oracle's Elixir](https://oracleselixir.com/), focusing on **how in-game resources influence victory** and **how side selection (🔵 Blue vs. 🔴 Red) impacts team performance**. Through a combination of statistical analysis and machine learning, the project ultimately builds a predictive model to forecast match outcomes.
 
-## Introduction
+## **Introduction**
 The raw data from [Oracle's Elixir](https://oracleselixir.com/) contains **117,576 records (rows)** and **161 features (columns)**.  
 
 Each **12 consecutive records** correspond to one match:
@@ -50,7 +50,7 @@ Below lists the used features and their description:
 | xpdiffat(10/15/20) | XP difference between two teams at 10/15/20 mintues |
 
 
-## Data Cleaning and Exploratory Data Analysis
+## **Data Cleaning and Exploratory Data Analysis**
 
 ### Data Cleaning
 
@@ -63,9 +63,13 @@ After filtering and selection, the dataset contains:
 - **16 columns** (side, result, objectives, and performance features, etc.)  
 
 #### Check and modify NaN
-
+The NaN check revealed that at least **2,822** team records contain incomplete data. Since filling in simulated values wouldn’t make sense in a competitive esports context—and the missing data accounts for only **~15%** of the entire dataset—**dropping the rows with NaN values** is a reasonable and efficient solution.  
+<p align="center">
+  <img src="image/NaN Checking.png" alt="NaN Checking" width="200"/>
+</p>
 
 #### Categorize Gamelength
+
 
 #### Recategorize result as win
 
