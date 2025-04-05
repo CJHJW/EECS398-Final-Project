@@ -3,7 +3,7 @@ layout: default
 title: EECS398 Practical Data Science - University of Michigan
 ---
 
-# 🎮 Forecasting Victory: 2024 League of Legends Worlds Matches Predictions
+# 🎮 **Forecasting Victory: 2024 League of Legends Worlds Matches Predictions**
 This data science project explores **2024 League of Legends match data** from [Oracle's Elixir](https://oracleselixir.com/), focusing on **how in-game resources influence victory** and **how side selection (🔵 Blue vs. 🔴 Red) impacts team performance**. Through a combination of statistical analysis and machine learning, the project ultimately builds a predictive model to forecast match outcomes.
 
 ## Introduction
@@ -30,17 +30,47 @@ This makes side selection a strategic tool — a subtle but important factor tha
 
 In practice, **Blue Side teams consistently perform better**. One contributing factor is the **camera perspective advantage**: although both sides appear symmetrical, the Blue side benefits from a slight downward tilt in the in-game camera. This offers a clearer view of flanks, jungle movements, and overall map activity — making it easier to react and make informed decisions. (Source: [Is red stronger than blue in League of Legends? - Eloking](https://eloking.com/blog/is-red-stronger-than-blue-in-lol#:~:text=The%20Blue%20Side%20team%20has,movements%20from%20the%20Red%20Side.))
 
-To better understand **side selection privilege**, this project analyzes match data to explore the question: **How does side selection (🔵 Blue vs. 🔴 Red) impact team performance?**
+To better understand **side selection privilege**, this project analyzes match data to explore the question: **How does side selection (🔵 Blue vs. 🔴 Red) impact team performance?**  
+
+Below lists the used features and their description:  
+
+| Features | Description |
+|----------|----------|
+| result | 1(Win), 0(Lose) |
+| league | Which league helds this match |
+| side | red, blue |
+| firstblood | Whether the team took the first kill, 1(Yes), 0(No) |
+| firstdragon | Whether the team took the first dragon, 1(Yes), 0(No) |
+| firstbaron | Whether the team took the first baron, 1(Yes), 0(No) |
+| firsttower | Whether the team took the first tower, 1(Yes), 0(No) |
+| firstmidtower | Whether the team took the first mid-tower, 1(Yes), 0(No) |
+| firsttothreetowers | Whether the team took the first third-tower, 1(Yes), 0(No) |
+| gamelength | How long the match lasted in seconds |
+| golddiffat(10/15/20) | Gold difference between two teams at 10/15/20 minutes |
+| xpdiffat(10/15/20) | XP difference between two teams at 10/15/20 mintues |
 
 
+## Data Cleaning and Exploratory Data Analysis
 
-## Contents
+### Data Cleaning
 
-- [Introduction](#1.introduction)
-- [Data Cleaning and Exploratory Data Analysis](#2.data_cleaning_and_analysis)
-- [Framing a Prediction Problem](#3.problem_framing)
-- [Baseline Model](#4.baseline_model)
-- [Final Model](#5.final_model)
+#### Extract team data and target columns
+- Selected only the team-level records, excluding individual player-level rows  
+- Extracted the key features listed in the previous section
+
+After filtering and selection, the dataset contains:  
+- **19596 rows (2 teams × 9798 matches)**  
+- **16 columns** (side, result, objectives, and performance features, etc.)  
+
+#### Check and modify NaN
+
+
+#### Categorize Gamelength
+
+#### Recategorize result as win
+
+### Univariate Analysis
+
 
 ## 📊 Model Comparison
 
