@@ -152,7 +152,7 @@ The plot below shows the win rates based on **team side** (🔵 blue vs 🔴 red
 Teams that secured first blood had a win rate approximately **18.6% higher** than those that did not.  
 🔵 Blue side teams showed an average **4.9% higher** win rate compared to 🔴 red side teams.  
 
-These insights highlight the strategic importance of early-game performance (first blood) and support the observed advantage of blue side teams.  
+These insights highlight the strategic importance of first blood and support the observed advantage of blue side teams.  
 
 <iframe src="assets/win_rate_blood.html" 
         width="120%" 
@@ -167,9 +167,25 @@ The plot below shows the win rates based on **team side** (🔵 blue vs 🔴 red
 Teams that secured first dragon had a win rate approximately **15.6% higher** than those that did not.  
 🔵 Blue side teams showed an average **9.1% higher** win rate compared to 🔴 red side teams.  
 
-These insights highlight the strategic importance of early-game performance (first dragon) and support the observed advantage of blue side teams.  
+These insights highlight the strategic importance of first dragon and support the observed advantage of blue side teams.  
 
 <iframe src="assets/win_rate_dragon.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
+
+#### **Win Rate by Side and First Objective Secured**
+
+From the analysis above, it's clear that the first resource secured (such as first blood, tower, baron) has a significant impact on a team's chance of winning. However, **the strength of this impact varies by objective**.  
+
+The plot below compares win rates for each side (🔵 blue and 🔴 red) based on whether they secured key objectives first. **It ranks these objectives by their positive influence on win rate, in ascending order**.
+
+Key insights:  
+- **Securing First Baron or First to Three Towers** shows the **strongest** correlation with winning, for both sides.  
+- 🔵 Blue side consistently gains slightly higher win rates from each objective compared to 🔴 red side.
+
+<iframe src="assets/win_rate_side_tower.html" 
         width="120%" 
         height="450" 
         frameborder="0">
