@@ -111,8 +111,6 @@ This transformation allows easier logical filtering and improves clarity in visu
 #### **Dateset overview**
 Below is a preview of the dataset after cleaning  
 
-Now, the dataset contains **16774 rows** and **16 columns**  
-
 <div class="table-wrapper" markdown="1">
 
 | | result | league | side | firstblood | firstdragon | firstbaron | firsttower | firstmidtower | firsttothreetowers | golddiffat10 | golddiffat15 | golddiffat20 | xpdiffat10 | xpdiffat15 | xpdiffat20 | time_label |
@@ -125,7 +123,9 @@ Now, the dataset contains **16774 rows** and **16 columns**
 
 </div>
 
-### Univariate Analysis
+### **Univariate Analysis**
+
+
 
 
 ## 📊 Model Comparison
