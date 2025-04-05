@@ -185,12 +185,11 @@ Key insights:
 - **Securing First Baron or First to Three Towers** shows the **strongest** correlation with winning, for both sides.  
 - 🔵 Blue side consistently gains slightly higher win rates from each objective compared to 🔴 red side.
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;">
-  <iframe src="assets/win_rate_side_tower.html" 
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-          frameborder="0">
-  </iframe>
-</div>
+<iframe src="assets/win_rate_side_tower.html" 
+        width="2000" 
+        height="400" 
+        frameborder="0">
+</iframe>
 
 
 ## 📊 Model Comparison
