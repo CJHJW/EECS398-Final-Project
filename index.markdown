@@ -186,7 +186,7 @@ Key insights:
 - 🔵 Blue side consistently gains slightly higher win rates from each objective compared to 🔴 red side.
 
 <iframe src="assets/win_rate_side_tower.html" 
-        width="120%" 
+        width="200%" 
         height="450" 
         frameborder="0">
 </iframe>
