@@ -115,7 +115,7 @@ Now, the dataset contains **16774 rows** and **16 columns**
   <link rel="stylesheet" href="/assets/table.css">
 </head>
 
-<div class="table-wrapper" markdown="block">
+<div class="table-wrapper" markdown="1">
 
 | | result | league | side | firstblood | firstdragon | firstbaron | firsttower | firstmidtower | firsttothreetowers | golddiffat10 | golddiffat15 | golddiffat20 | xpdiffat10 | xpdiffat15 | xpdiffat20 | time_label |
 |---:|---------:|:---------|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|:-------------|
