@@ -76,7 +76,7 @@ Losing only **~15%** data is acceptable
 The `gamelength` ranges from 1143 to 3482 seconds. Below shows the distribution of `gamelength`:  
 <iframe src="assets/gamelength_hist.html" 
         width="120%" 
-        height="400" 
+        height="450" 
         frameborder="0">
 </iframe>
 
@@ -94,7 +94,7 @@ Below shows the result of categorizing:
 
 <iframe src="assets/gameduration_hist.html" 
         width="120%" 
-        height="400" 
+        height="450" 
         frameborder="0">
 </iframe>
 
