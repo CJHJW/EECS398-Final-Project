@@ -38,6 +38,8 @@ To better understand **side selection privilege**, this project analyzes match d
 
 Below lists the used features and their description:  
 
+<div class="table-wrapper" markdown="block">
+
 | Features | Description |
 |----------|----------|
 | result | 1(Win), 0(Lose) |
@@ -52,6 +54,8 @@ Below lists the used features and their description:
 | gamelength | How long the match lasted in seconds |
 | golddiffat(10/15/20) | Gold difference between two teams at 10/15/20 minutes |
 | xpdiffat(10/15/20) | XP difference between two teams at 10/15/20 mintues |
+
+</div>
 
 
 ## **Data Cleaning and Exploratory Data Analysis**
