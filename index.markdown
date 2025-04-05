@@ -124,8 +124,22 @@ Below is a preview of the dataset after cleaning
 
 ### **Univariate Analysis**
 
+Two plots below show the distribution of XP difference at 10 minutes for red side and blue side teams:  
+🔴 For red side teams, 95% of XP differences range from -2129 to 1903, with a median of -63.  
+🔵 For blue side teams, 95% of XP differences range from -1903 to 2129, with a median of 63.  
+These results suggest that the blue side has a slight advantage in XP gain during the early game, likely contributing to better early-game momentum.  
 
+<iframe src="assets/xp10_red.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
 
+<iframe src="assets/xp10_blue.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
 
 ## 📊 Model Comparison
 
