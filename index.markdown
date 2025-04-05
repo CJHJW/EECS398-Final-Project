@@ -80,9 +80,9 @@ The `gamelength` ranges from 1143 to 3482 seconds. Below shows the distribution 
         frameborder="0">
 </iframe>
 
-Instead of focusing on specific gamelength in seconds, we care more about **the relationship between general time period in minutes and other features**. So `gamelength` needs to be categorized/labeled.  
+Instead of focusing on specific game lengths in seconds, our analysis is more concerned with the **relationship between general time periods (in minutes)** and other features. Therefore, the gamelength column needs to be categorized into **time periods**, and drop the original `gamelength`.
 
-Below shows the result of categorizing:  
+Below are the results after categorizing
 
 | Time Period | Count |
 |----------|----------|
@@ -98,7 +98,25 @@ Below shows the result of categorizing:
         frameborder="0">
 </iframe>
 
-#### Recategorize result as win
+#### **Recategorize `result` as Boolean (Win: True / Lose: False)**
+To improve readability and make the data more intuitive, `result` — originally encoded as 1 for a win and 0 for a loss — is recategorized into a Boolean type:  
+- 1 → True (Win)
+- 0 → False (Lose)
+
+This transformation allows easier logical filtering and improves clarity in visualizations and model interpretation.
+
+#### **Dateset overview**
+Below is a preview of the dataset after cleaning  
+Now, the dataset contains **16774 rows** and **16 columns**  
+
+|    | result | league | side | firstblood | firstdragon | firstbaron | firsttower | firstmidtower | firsttothreetowers | golddiffat10 | golddiffat15 | golddiffat20 | xpdiffat10 | xpdiffat15 | xpdiffat20 | time_label |
+|---:|---------:|:---------|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|:-------------|
+| 30 |        1 | TSC      | Blue   |            0 |             1 |            1 |            1 |               1 |                    1 |           1364 |           2293 |           4248 |          557 |          949 |         2138 | <=25(mins)   |
+| 31 |        0 | TSC      | Red    |            1 |             0 |            0 |            0 |               0 |                    0 |          -1364 |          -2293 |          -4248 |         -557 |         -949 |        -2138 | <=25(mins)   |
+| 32 |        1 | TSC      | Blue   |            0 |             0 |            0 |            0 |               0 |                    0 |            -88 |            -75 |            777 |          625 |         1092 |         2722 | 35-40(mins)  |
+| 33 |        0 | TSC      | Red    |            1 |             1 |            1 |            1 |               1 |                    1 |             88 |             75 |           -777 |         -625 |        -1092 |        -2722 | 35-40(mins)  |
+| 34 |        1 | TSC      | Blue   |            0 |             1 |            1 |            0 |               0 |                    0 |          -2583 |           -561 |          -1528 |        -1718 |          410 |         -722 | 30-35(mins)  |
+
 
 ### Univariate Analysis
 
