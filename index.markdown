@@ -39,7 +39,6 @@ Below lists the used features and their description:
 | Features | Description |
 |----------|----------|
 | result | 1(Win), 0(Lose) |
-| league | Which league helds this match |
 | side | red, blue |
 | firstblood | Whether the team took the first kill, 1(Yes), 0(No) |
 | firstdragon | Whether the team took the first dragon, 1(Yes), 0(No) |
@@ -63,12 +62,12 @@ Below lists the used features and their description:
 
 After filtering and selection, the dataset contains:  
 - **19596 rows (2 teams × 9798 matches)**  
-- **16 columns** (side, result, objectives, and performance features, etc.)  
+- **15 columns** (side, result, objectives, and performance features, etc.)  
 
 #### **Check and modify NaN**
 Below shows the result of Null value checking. It revealed that at least **2,822** team records contain incomplete data. Since filling in simulated values wouldn’t make sense in a competitive esports context—and the missing data accounts for only **~15%** of the entire dataset—**dropping the rows with NaN values** is a reasonable and efficient solution. After deleting NaN data, the dataset contains:  
 - **16774 rows (2 teams × 8387 matches)**
-- **16 columns**  
+- **15 columns**  
 
 Losing only **~15%** data is acceptable  
 <p align="center">
@@ -113,13 +112,13 @@ Below is a preview of the dataset after cleaning
 
 <div class="table-wrapper" markdown="1">
 
-| | result | league | side | firstblood | firstdragon | firstbaron | firsttower | firstmidtower | firsttothreetowers | golddiffat10 | golddiffat15 | golddiffat20 | xpdiffat10 | xpdiffat15 | xpdiffat20 | time_label |
-|---:|---------:|:---------|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|:-------------|
-| 30 |        1 | TSC      | Blue   |            0 |             1 |            1 |            1 |               1 |                    1 |           1364 |           2293 |           4248 |          557 |          949 |         2138 | <=25(mins)   |
-| 31 |        0 | TSC      | Red    |            1 |             0 |            0 |            0 |               0 |                    0 |          -1364 |          -2293 |          -4248 |         -557 |         -949 |        -2138 | <=25(mins)   |
-| 32 |        1 | TSC      | Blue   |            0 |             0 |            0 |            0 |               0 |                    0 |            -88 |            -75 |            777 |          625 |         1092 |         2722 | 35-40(mins)  |
-| 33 |        0 | TSC      | Red    |            1 |             1 |            1 |            1 |               1 |                    1 |             88 |             75 |           -777 |         -625 |        -1092 |        -2722 | 35-40(mins)  |
-| 34 |        1 | TSC      | Blue   |            0 |             1 |            1 |            0 |               0 |                    0 |          -2583 |           -561 |          -1528 |        -1718 |          410 |         -722 | 30-35(mins)  |
+|    | side   |   firstblood |   firstdragon |   firstbaron |   firsttower |   firstmidtower |   firsttothreetowers |   golddiffat10 |   golddiffat15 |   golddiffat20 |   xpdiffat10 |   xpdiffat15 |   xpdiffat20 | time_label   | win   |
+|---:|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|:-------------|:------|
+| 30 | Blue   |            0 |             1 |            1 |            1 |               1 |                    1 |           1364 |           2293 |           4248 |          557 |          949 |         2138 | <=25(mins)   | True  |
+| 31 | Red    |            1 |             0 |            0 |            0 |               0 |                    0 |          -1364 |          -2293 |          -4248 |         -557 |         -949 |        -2138 | <=25(mins)   | False |
+| 32 | Blue   |            0 |             0 |            0 |            0 |               0 |                    0 |            -88 |            -75 |            777 |          625 |         1092 |         2722 | 35-40(mins)  | True  |
+| 33 | Red    |            1 |             1 |            1 |            1 |               1 |                    1 |             88 |             75 |           -777 |         -625 |        -1092 |        -2722 | 35-40(mins)  | False |
+| 34 | Blue   |            0 |             1 |            1 |            0 |               0 |                    0 |          -2583 |           -561 |          -1528 |        -1718 |          410 |         -722 | 30-35(mins)  | True  |
 
 </div>
 
