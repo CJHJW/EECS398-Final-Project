@@ -3,10 +3,19 @@ layout: default
 title: EECS398 Practical Data Science - University of Michigan
 ---
 
+<link rel="stylesheet" href="/EECS398-Final-Project/assets/table.css">
+
 # 🎮 **Forecasting Victory: 2024 League of Legends Worlds Matches Predictions**
 This data science project explores **2024 League of Legends match data** from [Oracle's Elixir](https://oracleselixir.com/), focusing on **how in-game resources influence victory** and **how side selection (🔵 Blue vs. 🔴 Red) impacts team performance**. Through a combination of statistical analysis and machine learning, the project ultimately builds a predictive model to forecast match outcomes.
 
-## **Introduction**
+## **Table of Contents**
+- [Introduction](#introduction)
+- [Data Cleaning and Exploratory Data Analysis](#data-cleaning-and-exploratory-data-analysis)
+- [Framing a Prediction Problem](#framing-a-prediction-problem)
+- [Baseline Model](#baseline-model)
+- [Final Model](#final-model)
+
+## **[Introduction](#table-of-contents)**
 The raw data from [Oracle's Elixir](https://oracleselixir.com/) contains **117,576 records (rows)** and **161 features (columns)**.  
 
 Each **12 consecutive records** correspond to one match:
@@ -37,7 +46,6 @@ Below lists the used features and their description:
 | Features | Description |
 |----------|----------|
 | result | 1(Win), 0(Lose) |
-| league | Which league helds this match |
 | side | red, blue |
 | firstblood | Whether the team took the first kill, 1(Yes), 0(No) |
 | firstdragon | Whether the team took the first dragon, 1(Yes), 0(No) |
@@ -50,7 +58,8 @@ Below lists the used features and their description:
 | xpdiffat(10/15/20) | XP difference between two teams at 10/15/20 mintues |
 
 
-## **Data Cleaning and Exploratory Data Analysis**
+
+## **[Data Cleaning and Exploratory Data Analysis](#table-of-contents)**
 
 ### **Data Cleaning**
 
@@ -60,12 +69,12 @@ Below lists the used features and their description:
 
 After filtering and selection, the dataset contains:  
 - **19596 rows (2 teams × 9798 matches)**  
-- **16 columns** (side, result, objectives, and performance features, etc.)  
+- **15 columns** (side, result, objectives, and performance features, etc.)  
 
 #### **Check and modify NaN**
 Below shows the result of Null value checking. It revealed that at least **2,822** team records contain incomplete data. Since filling in simulated values wouldn’t make sense in a competitive esports context—and the missing data accounts for only **~15%** of the entire dataset—**dropping the rows with NaN values** is a reasonable and efficient solution. After deleting NaN data, the dataset contains:  
 - **16774 rows (2 teams × 8387 matches)**
-- **16 columns**  
+- **15 columns**  
 
 Losing only **~15%** data is acceptable  
 <p align="center">
@@ -74,30 +83,309 @@ Losing only **~15%** data is acceptable
 
 #### **Categorize `Gamelength`**
 The `gamelength` ranges from 1143 to 3482 seconds. Below shows the distribution of `gamelength`:  
-<iframe src="_site/assets/gamelength_hist.html" 
-        width="100%" 
-        height="600" 
+<iframe src="assets/gamelength_hist.html" 
+        width="120%" 
+        height="450" 
         frameborder="0">
 </iframe>
 
-#### Recategorize result as win
+Instead of focusing on specific game lengths in seconds, our analysis is more concerned with the **relationship between general time periods (in minutes)** and other features. Therefore, the gamelength column needs to be categorized into **time periods**, and drop the original `gamelength`.
 
-### Univariate Analysis
+Below are the results after categorizing
 
+| Time Period | Count |
+|----------|----------|
+| 30-35(mins) | 5522 |
+| 25-30(mins) | 5348 |
+| 35-40(mins) | 2714 |
+| <=25(mins) | 1786 |
+| >=40(mins) | 1404 |
 
-## 📊 Model Comparison
+<iframe src="assets/gameduration_hist.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
 
-Here we show the accuracy and confusion matrix of the baseline vs final model...
+#### **Recategorize `result` as Boolean (Win: True / Lose: False)**
+To improve readability and make the data more intuitive, `result` — originally encoded as 1 for a win and 0 for a loss — is recategorized into a Boolean type:  
+- 1 → True (Win)
+- 0 → False (Lose)
 
-## 🎯 Feature Engineering
+This transformation allows easier logical filtering and improves clarity in visualizations and model interpretation.
 
-- `StandardScaler` on gold diff
-- `QuantileTransformer` on XP diff
+#### **Dateset overview**
+Below is a preview of the dataset after cleaning  
 
-## 🖼️ Visualizations
+<div class="table-wrapper" markdown="1">
 
-![Confusion Matrix](/assets/img/conf_matrix.png)
+|    | side   |   firstblood |   firstdragon |   firstbaron |   firsttower |   firstmidtower |   firsttothreetowers |   golddiffat10 |   golddiffat15 |   golddiffat20 |   xpdiffat10 |   xpdiffat15 |   xpdiffat20 | time_label   | win   |
+|---:|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|:-------------|:------|
+| 30 | Blue   |            0 |             1 |            1 |            1 |               1 |                    1 |           1364 |           2293 |           4248 |          557 |          949 |         2138 | <=25(mins)   | True  |
+| 31 | Red    |            1 |             0 |            0 |            0 |               0 |                    0 |          -1364 |          -2293 |          -4248 |         -557 |         -949 |        -2138 | <=25(mins)   | False |
+| 32 | Blue   |            0 |             0 |            0 |            0 |               0 |                    0 |            -88 |            -75 |            777 |          625 |         1092 |         2722 | 35-40(mins)  | True  |
+| 33 | Red    |            1 |             1 |            1 |            1 |               1 |                    1 |             88 |             75 |           -777 |         -625 |        -1092 |        -2722 | 35-40(mins)  | False |
+| 34 | Blue   |            0 |             1 |            1 |            0 |               0 |                    0 |          -2583 |           -561 |          -1528 |        -1718 |          410 |         -722 | 30-35(mins)  | True  |
 
-## ✅ Conclusion
+</div>
 
-The final model outperformed the baseline in both accuracy and stability.
+### **Univariate Analysis**
+
+Two plots below show the **distribution of XP difference at 10 minutes** for red side and blue side teams:  
+
+🔴 For red side teams, 95% of XP differences range from **-2129 to 1903**, with a median of **-63**.  
+🔵 For blue side teams, 95% of XP differences range from **-1903 to 2129**, with a median of **63**.  
+
+These results suggest that **the blue side has a slight advantage in XP gain during the early game**, likely contributing to better early-game momentum.  
+
+<iframe src="assets/xp10_red.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
+
+<iframe src="assets/xp10_blue.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
+
+### **Bivariate Analysis**
+
+#### **Win Rate for each side and firstblood**
+
+The plot below shows the win rates based on **team side** (🔵 blue vs 🔴 red) and **whether the team secured first blood**:  
+
+Teams that secured first blood had a win rate approximately **18.6% higher** than those that did not.  
+🔵 Blue side teams showed an average **4.9% higher** win rate compared to 🔴 red side teams.  
+
+These insights highlight the strategic importance of first blood and support the observed advantage of blue side teams.  
+
+<iframe src="assets/win_rate_blood.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
+
+#### **Win Rate for each side and firstdragon**
+
+The plot below shows the win rates based on **team side** (🔵 blue vs 🔴 red) and **whether the team secured first dragon**:  
+
+Teams that secured first dragon had a win rate approximately **15.6% higher** than those that did not.  
+🔵 Blue side teams showed an average **9.1% higher** win rate compared to 🔴 red side teams.  
+
+These insights highlight the strategic importance of first dragon and support the observed advantage of blue side teams.  
+
+<iframe src="assets/win_rate_dragon.html" 
+        width="120%" 
+        height="450" 
+        frameborder="0">
+</iframe>
+
+#### **Win Rate by Side and First Objective Secured**
+
+From the analysis above, it's clear that the first resource secured (such as first blood, tower, baron) has a significant impact on a team's chance of winning. However, **the strength of this impact varies by objective**.  
+
+The plot below compares win rates for each side (🔵 blue and 🔴 red) based on whether they secured key objectives first. **It ranks these objectives by their positive influence on win rate, in ascending order**.
+
+Key insights:  
+- **Securing First Baron or First to Three Towers** shows the **strongest** correlation with winning, for both sides.  
+- 🔵 Blue side consistently gains slightly higher win rates from each objective compared to 🔴 red side.
+
+<iframe src="assets/win_rate_side_tower.html" 
+        width="900" 
+        height="400" 
+        frameborder="0">
+</iframe>
+
+#### **Difference in Gold and XP at 10 Minutes Across Game Lengths**
+The two plots below illustrate how gold and XP differences at 10 minutes vary across different game duration groups:
+
+- The violin plot shows that **the spread of XP differences narrows as game length increases**. This makes sense — longer matches tend to be more competitive, so the performance gap between the two teams is usually smaller early on.
+- The scatter plot supports this observation. In shorter matches, more teams exhibit larger differences in XP and gold at 10 minutes, while longer matches tend to have teams that are more evenly matched early in the game.
+
+<iframe src="assets/xp_gold_10_violin.html" 
+        width="1000" 
+        height="500" 
+        frameborder="0">
+</iframe>
+
+<iframe src="assets/xp_gold_10_scatter.html" 
+        width="1000" 
+        height="500" 
+        frameborder="0">
+</iframe>
+
+#### **Distribution of Gold and XP Difference at 20 Minutes by Game Result**
+
+The two plots below illustrate **how gold and XP differences at 20 minutes vary depending on the final result of the match**:
+
+- It is clear that **teams with a greater lead in gold and XP at 20 minutes have a much higher chance of winning the game**  
+- Winning teams tend to have significantly positive gold and XP differences, while **losing teams cluster around negative values**  
+- Specifically, 50% of winning teams have **at least a 2571 gold** lead over their opponents at the 20-minute mark. This suggests that, on average, half of the winning teams have accumulated enough gold for **one additional item**, giving them a noticeable power spike over the losing team.  
+
+<iframe src="assets/gold_20_hist.html" 
+        width="800" 
+        height="500" 
+        frameborder="0">
+</iframe>
+
+<iframe src="assets/xp_20_hist.html" 
+        width="800" 
+        height="500" 
+        frameborder="0">
+</iframe>
+
+### **Interesting Aggregates**
+Table 1 shows the quantified differences in **win rate**, **first objective secured rate**, and **gold/XP difference** between the two sides (🔵 Blue vs 🔴 Red):
+
+The results illustrate that except **first dragon rate**, **🔵 Blue teams consistently outperform 🔴 Red teams** across all key indicators.  
+Blue side teams not only have a **higher win rate**, but also **secure early objectives more often** and maintain a **stronger lead in both gold and XP**.   
+
+<div class="table-wrapper" markdown="1">
+
+| side   |   firstblood |   firstdragon |   firstbaron |   firsttower |   firstmidtower |   firsttothreetowers |   golddiffat10 |   golddiffat15 |   golddiffat20 |   xpdiffat10 |   xpdiffat15 |   xpdiffat20 |      win |
+|:-------|-------------:|--------------:|-------------:|-------------:|----------------:|---------------------:|---------------:|---------------:|---------------:|-------------:|-------------:|-------------:|---------:|
+| Blue   |     0.516275 |      0.384643 |     0.501967 |     0.548706 |        0.572314 |             0.571837 |        144.923 |        331.158 |        523.683 |      66.8972 |      94.4559 |       95.871 | 0.527483 |
+| Red    |     0.483725 |      0.61488  |     0.456421 |     0.451294 |        0.427686 |             0.428163 |       -144.923 |       -331.158 |       -523.683 |     -66.8972 |     -94.4559 |      -95.871 | 0.472517 |
+
+</div>
+
+Table 2 shows the quantified differences in **win rate** between 🔵 Blue and 🔴 Red sides across **different game durations**:
+
+- The results indicate that **🔵 Blue teams consistently outperform 🔴 Red teams at all game lengths**.
+- Notably, in **shorter matches (≤ 25 minutes)**, Blue teams win over **60%** of the time — a significant advantage.
+- However, in **longer matches (> 25 minutes)**, the win rate difference between the two sides narrows to within **6%**, suggesting the side advantage becomes less impactful as the game progresses.  
+
+<div class="table-wrapper" markdown="1">
+
+| side   |   <=25(mins) |   25-30(mins) |   30-35(mins) |   35-40(mins) |   >=40(mins) |
+|:-------|-------------:|--------------:|--------------:|--------------:|-------------:|
+| Blue   |     0.601344 |      0.522438 |      0.516117 |      0.511422 |      0.52849 |
+| Red    |     0.398656 |      0.477562 |      0.483883 |      0.488578 |      0.47151 |
+
+</div>
+
+### **Imputation**
+Imputation is not required in this case, as the cleaned dataset contains no **missing (NaN)** values.
+
+## **[Framing a Prediction Problem](#table-of-contents)**
+We aim to predict **whether a team wins or loses a match** based on their **in-game performance features collected by the 20-minute mark**, as analyzed in the sections above.  
+- Prediction Type: **Binary Classification**
+- Response Variable: **win**(True=Win, False=Lose), the only variable represents the match outcomes, interpretable
+- Evaluation Matrics: confusion matrix, accuracy, **ROC curve**, **AUC score**. Unlike accuracy and precision, which depend on a specific classification threshold typically 0.5, **ROC AUC evaluates model performance across all possible thresholds**. This gives a more complete view of the classifier’s ability to separate the two classes. Also, in the dataset, there may be a slight imbalance in match outcomes (blue side winning more often). **ROC AUC is robust to class imbalance**, whereas accuracy may be misleading in such cases.  
+- Except for `time_label`, all the used features are known at the time of prediction(before the game end).
+
+## **[Baseline Model](#table-of-contents)**
+The baseline model uses **logistic regression** to predict whether a team will win or lose a match, based on early-game features available by the 20-minute mark.  
+
+Based on insights from the exploratory data analysis (EDA), the features `side` and `firstbaron` showed strong influence on match outcomes. Therefore, the baseline model uses these two categorical features along with `xpdiffat10` — a quantitative feature representing early XP advantage — to train and make predictions.  
+
+The table below shows features description:
+
+| Feature   |  Type |   Description |   Method |
+|:-------|-------------:|--------------:|--------------:|
+| side  |     Nominal |   Team side: Blue or Red |      One-Hot Encoding |
+| firstbaron  |    Nominal |     Whether the team took first Baron (0/1)	 |      One-Hot Encoding |
+| xpdiffat10  |     Quantative |      XP difference between two teams at 10 min |      Standard Scaler |
+
+The model uses 30% data as test data. One-hot encoding is applied to the nominal features using `OneHotEncoder(drop='first')` to avoid multicollinearity, and StandardScaler() is applied to ensure fair contribution in the logistic regression model.  
+
+Plots below shows model performance:
+
+The first plot shows the confusion matrix with **0.8281** accuracy.  
+
+<img src="assets/base_cm.png" alt="Confusion Matrix" style="width:100%; max-width:600px;">
+
+The second plot shows the ROC curve with **0.88** AUC score.  
+
+<img src="assets/base_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
+
+The performance of the baseline model isn't perfect, but it is strong given its **simplicity**. The model uses only three features yet achieves an **accuracy of 0.8281** and an **AUC score of 0.88**, indicating that side selection, early objective control, and XP advantage are all strongly correlated with winning.  
+
+However, there is still room for improvement:  
+- While 82.81% accuracy and 0.88 AUC socre is promising, it's likely that incorporating more in-game features could further boost performance.  
+- Using logistic regression might be too simple in this case. The model oversimplifies the true complexity. Also, logistic regression doesn't consider the correlation between features. For example, team taking the first baron might take a lead in xp or gold. Therefore, exploring more complex models could potentially improve classification performance.  
+
+## **[Final Model](#table-of-contents)**
+
+### **Feature Engineering**  
+`firstdragon` and `firstblood`  are included in the model because they capture early-game advantages that strongly correlate with match outcomes as shown in previous [EDA section](#Win-Rate-by-Side-and-First-Objective-Secured). Moreover, following new features are created:  
+
+<div class="table-wrapper" markdown="1">
+  
+| Feature   |  Input Columns |  What It Captures |  Why It Matters |
+|:-------|-------------:|--------------:|--------------:|
+| xp_per_min  | `xpdiffat10`, `xpdiffat15`, `xpdiffat20` | XP difference per minute | Considers XP difference at all time periods to reflect leveling (dis)advantage |
+| gold_per_min  | `golddiffat10`, `golddiffat15`, `golddiffat20` | Gold difference per minute | Considers Gold difference at all time periods to reflect economic (dis)advantage |
+| tower_score  | `firsttower`, `firstmidtower`, `firsttothreetowers` | How many kinds of tower a team firstly taken in total(0-4) |  Measures overall map pressure and early tower control |
+| gold_drop_1015  | `golddiffat10`, `golddiffat15` | Gold lead change (10–15 mins) |  Indicates gold economy shift from 10 to 15 mins |
+| gold_drop_1520  | `golddiffat15`, `golddiffat20` | Gold lead change (15–20 mins) |  Indicates gold economy shift from 15 to 20 mins |
+| xp_drop_1015  | `xpdiffat10`, `xpdiffat15` | XP lead change (10–15 mins) |  Indicates xp advantage shift from 10 to 15 mins |
+| xp_drop_1520  | `xpdiffat15`, `xpdiffat20` | XP lead change (15–20 mins) |  Indicates xp advantage shift from 15 to 20 mins |
+
+</div>
+
+In addition to **logistic regression**, we also trained models using **Random Forest** and **Decision Tree classifiers** to explore the impact of non-linear relationships and feature interactions on prediction performance.  
+
+### **Tuning Hyperparameters**
+We use **GridSearchCV** to find the optimal tree depth for Random Forest and Decision Tree. Tuning `max_depth` helps control model complexity and reduces the risk of overfitting by limiting how deeply the trees can grow. The train result shows that Random Forest's optimal tree depth is **6**, Decision Tree's optimal tree depth is **5**.  
+
+### **Models Performance**
+
+The **Logistic Regression** model performs **85.08** accuracy and **0.93** AUC. Below shows the confusion matrix and ROC curve:  
+
+<img src="assets/final_logistic_cm.png" alt="Confusion Matrix" style="width:100%; max-width:600px;">
+
+<img src="assets/final_logistic_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
+
+The **Random Forest** model performs **84.98** accuracy and **0.92** AUC. Below shows the confusion matrix and ROC curve:  
+
+<img src="assets/final_rf_cm.png" alt="Confusion Matrix" style="width:100%; max-width:600px;">
+
+<img src="assets/final_rf_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
+
+The **Decision Tree** model performs **83.75** accuracy and **0.91** AUC. Below shows the confusion matrix and ROC curve:  
+
+<img src="assets/final_dt_cm.png" alt="Confusion Matrix" style="width:100%; max-width:600px;">
+
+<img src="assets/final_dt_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
+
+### **Models Comparison**
+
+Below shows the comparison of three model's AUC score. The final Logistic Regression model has the best performance not only on accuracy but also on AUC score. 
+
+<img src="assets/all_models_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
+
+Logistic Regression model playing better than other two tree models suggests that:  
+- The relationship between features and target is mostly linear
+- Feature engineering captured key patterns well
+- Tree-based models may have overfit
+
+As a result, the **final Logistic Regression model** is selected as the final model since it has the highest accuracy and AUC score while it's also simple and easy to interpret.  
+
+Compared to the base logistic regression model, the final model demonstrates a notable improvement in predictive performance:  
+- Accuracy increased from **82.81%** to **85.08%**
+- AUC score improved from **0.88** to **0.93**
+
+Overall, **85.08%** accuracy is not perfect for prediction model. But **0.93** AUC indicates excellent performance, with the model having a high ability to distinguish between classes. The final model now is more confident and accurate in ranking match outcomes.  
+
+### **Feature Importance**
+Below shows each feature's importance for the base model and the final model:  
+
+<img src="assets/base_fi.png" alt="feature importance" style="width:100%; max-width:600px;">
+
+<img src="assets/final_fi.png" alt="feature importance" style="width:100%; max-width:600px;">
+
+**Base Model Feature Importance**:  The base model relies heavily on `firstbaron`, it lacks depth in understanding game trends over time, relying mainly on early or one-time events.  
+**Final Model Feature Importance**: The final model benefits from a richer set of engineered features, it captures not only early-game objectives but also trends over time (like XP and gold changes).  
+
+One surprising result from the logistic regression feature importance is the **minimal impact of the side feature on match outcome**. This contrasts with our earlier exploratory data analysis (EDA), where we observed noticeable performance differences between teams starting on the blue vs. red side.  
+
+While side selection may correlate with win rate, it might only be **indirectly related**. The model already includes other features which are stronger impact for performance. Once those are included, side may no longer add predictive value.
+
+---
+
+Thanks for reading!  
+[⬆️ Back to Top](#)
+
