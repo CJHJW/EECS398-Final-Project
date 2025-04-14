@@ -45,14 +45,14 @@ Below lists the used features and their description:
 
 | Features | Description |
 |----------|----------|
-| result | 1(Win), 0(Lose) |
+| result | 1 (Win), 0 (Lose) |
 | side | red, blue |
-| firstblood | Whether the team took the first kill, 1(Yes), 0(No) |
-| firstdragon | Whether the team took the first dragon, 1(Yes), 0(No) |
-| firstbaron | Whether the team took the first baron, 1(Yes), 0(No) |
-| firsttower | Whether the team took the first tower, 1(Yes), 0(No) |
-| firstmidtower | Whether the team took the first mid-tower, 1(Yes), 0(No) |
-| firsttothreetowers | Whether the team took the first third-tower, 1(Yes), 0(No) |
+| firstblood | Whether the team took the first kill, 1 (Yes), 0 (No) |
+| firstdragon | Whether the team took the first dragon, 1 (Yes), 0 (No) |
+| firstbaron | Whether the team took the first baron, 1 (Yes), 0 (No) |
+| firsttower | Whether the team took the first tower, 1 (Yes), 0 (No) |
+| firstmidtower | Whether the team took the first mid-tower, 1 (Yes), 0 (No) |
+| firsttothreetowers | Whether the team took the first third-tower, 1 (Yes), 0 (No) |
 | gamelength | How long the match lasted in seconds |
 | golddiffat(10/15/20) | Gold difference between two teams at 10/15/20 minutes |
 | xpdiffat(10/15/20) | XP difference between two teams at 10/15/20 mintues |
@@ -95,24 +95,17 @@ Below are the results after categorizing
 
 | Time Period | Count |
 |----------|----------|
-| 30-35(mins) | 5522 |
-| 25-30(mins) | 5348 |
-| 35-40(mins) | 2714 |
-| <=25(mins) | 1786 |
-| >=40(mins) | 1404 |
+| 30-35 | 5522 |
+| 25-30 | 5348 |
+| 35-40 | 2714 |
+| <=25 | 1786 |
+| >=40 | 1404 |
 
 <iframe src="assets/gameduration_hist.html" 
         width="120%" 
         height="450" 
         frameborder="0">
 </iframe>
-
-#### **Recategorize `result` as Boolean (Win: True / Lose: False)**
-To improve readability and make the data more intuitive, `result` — originally encoded as 1 for a win and 0 for a loss — is recategorized into a Boolean type:  
-- 1 → True (Win)
-- 0 → False (Lose)
-
-This transformation allows easier logical filtering and improves clarity in visualizations and model interpretation.
 
 #### **Dateset overview**
 Below is a preview of the dataset after cleaning  
@@ -131,20 +124,14 @@ Below is a preview of the dataset after cleaning
 
 ### **Univariate Analysis**
 
-Two plots below show the **distribution of XP difference at 10 minutes** for red side and blue side teams:  
-
 🔴 For red side teams, 95% of XP differences range from **-2129 to 1903**, with a median of **-63**.  
 🔵 For blue side teams, 95% of XP differences range from **-1903 to 2129**, with a median of **63**.  
 
 These results suggest that **the blue side has a slight advantage in XP gain during the early game**, likely contributing to better early-game momentum.  
 
-<iframe src="assets/xp10_red.html" 
-        width="120%" 
-        height="450" 
-        frameborder="0">
-</iframe>
+The plot below shows the **distribution of XP difference at 10 minutes** for red side team:  
 
-<iframe src="assets/xp10_blue.html" 
+<iframe src="assets/xp10_red.html" 
         width="120%" 
         height="450" 
         frameborder="0">
@@ -162,21 +149,6 @@ Teams that secured first blood had a win rate approximately **18.6% higher** tha
 These insights highlight the strategic importance of first blood and support the observed advantage of blue side teams.  
 
 <iframe src="assets/win_rate_blood.html" 
-        width="120%" 
-        height="450" 
-        frameborder="0">
-</iframe>
-
-#### **Win Rate for each side and firstdragon**
-
-The plot below shows the win rates based on **team side** (🔵 blue vs 🔴 red) and **whether the team secured first dragon**:  
-
-Teams that secured first dragon had a win rate approximately **15.6% higher** than those that did not.  
-🔵 Blue side teams showed an average **9.1% higher** win rate compared to 🔴 red side teams.  
-
-These insights highlight the strategic importance of first dragon and support the observed advantage of blue side teams.  
-
-<iframe src="assets/win_rate_dragon.html" 
         width="120%" 
         height="450" 
         frameborder="0">
@@ -202,13 +174,14 @@ Key insights:
 The two plots below illustrate how gold and XP differences at 10 minutes vary across different game duration groups:
 
 - The violin plot shows that **the spread of XP differences narrows as game length increases**. This makes sense — longer matches tend to be more competitive, so the performance gap between the two teams is usually smaller early on.
-- The scatter plot supports this observation. In shorter matches, more teams exhibit larger differences in XP and gold at 10 minutes, while longer matches tend to have teams that are more evenly matched early in the game.
 
 <iframe src="assets/xp_gold_10_violin.html" 
         width="1000" 
         height="500" 
         frameborder="0">
 </iframe>
+
+- The scatter plot supports this observation. In shorter matches, more teams exhibit larger differences in XP and gold at 10 minutes, while longer matches tend to have teams that are more evenly matched early in the game
 
 <iframe src="assets/xp_gold_10_scatter.html" 
         width="1000" 
@@ -218,19 +191,13 @@ The two plots below illustrate how gold and XP differences at 10 minutes vary ac
 
 #### **Distribution of Gold and XP Difference at 20 Minutes by Game Result**
 
-The two plots below illustrate **how gold and XP differences at 20 minutes vary depending on the final result of the match**:
+The plot below illustrates **how gold differences at 20 minutes vary depending on the final result of the match**:
 
-- It is clear that **teams with a greater lead in gold and XP at 20 minutes have a much higher chance of winning the game**  
-- Winning teams tend to have significantly positive gold and XP differences, while **losing teams cluster around negative values**  
+- It is clear that **teams with a greater lead in gold at 20 minutes have a much higher chance of winning the game**  
+- Winning teams tend to have significantly positive gold differences, while **losing teams cluster around negative values**  
 - Specifically, 50% of winning teams have **at least a 2571 gold** lead over their opponents at the 20-minute mark. This suggests that, on average, half of the winning teams have accumulated enough gold for **one additional item**, giving them a noticeable power spike over the losing team.  
 
 <iframe src="assets/gold_20_hist.html" 
-        width="800" 
-        height="500" 
-        frameborder="0">
-</iframe>
-
-<iframe src="assets/xp_20_hist.html" 
         width="800" 
         height="500" 
         frameborder="0">
@@ -371,6 +338,9 @@ Compared to the base logistic regression model, the final model demonstrates a n
 Overall, **85.08%** accuracy is not perfect for prediction model. But **0.93** AUC indicates excellent performance, with the model having a high ability to distinguish between classes. The final model now is more confident and accurate in ranking match outcomes.  
 
 ### **Feature Importance**
+
+In the logistic regression model, after regularizing each variable, the feature coefficients become comparable. A positive coefficient increases the probability of winning, while a negative one decreases it. Moreover, the larger the absolute value of a coefficient, the greater its influence on the predicted probability. Therefore, we interpret feature importance based on the magnitude and sign of these coefficients.  
+
 Below shows each feature's importance for the base model and the final model:  
 
 <img src="assets/base_fi.png" alt="feature importance" style="width:100%; max-width:600px;">
@@ -381,8 +351,6 @@ Below shows each feature's importance for the base model and the final model:
 **Final Model Feature Importance**: The final model benefits from a richer set of engineered features, it captures not only early-game objectives but also trends over time (like XP and gold changes).  
 
 One surprising result from the logistic regression feature importance is the **minimal impact of the side feature on match outcome**. This contrasts with our earlier exploratory data analysis (EDA), where we observed noticeable performance differences between teams starting on the blue vs. red side.  
-
-While side selection may correlate with win rate, it might only be **indirectly related**. The model already includes other features which are stronger impact for performance. Once those are included, side may no longer add predictive value.
 
 ---
 
