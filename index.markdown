@@ -148,7 +148,7 @@ Teams that secured first blood had a win rate approximately **18.6% higher** tha
 
 These insights highlight the strategic importance of first blood and support the observed advantage of blue side teams.  
 
-<iframe src="assets/win_rate_blood.html" 
+<iframe src="assets/win_blood.html" 
         width="120%" 
         height="450" 
         frameborder="0">
@@ -164,7 +164,7 @@ Key insights:
 - **Securing First Baron or First to Three Towers** shows the **strongest** correlation with winning, for both sides.  
 - 🔵 Blue side consistently gains slightly higher win rates from each objective compared to 🔴 red side.
 
-<iframe src="assets/win_rate_side_tower.html" 
+<iframe src="assets/win_side_tower.html" 
         width="900" 
         height="400" 
         frameborder="0">
