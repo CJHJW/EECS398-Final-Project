@@ -181,27 +181,6 @@ The two plots below illustrate how gold and XP differences at 10 minutes vary ac
         frameborder="0">
 </iframe>
 
-- The scatter plot supports this observation. In shorter matches, more teams exhibit larger differences in XP and gold at 10 minutes, while longer matches tend to have teams that are more evenly matched early in the game
-
-<iframe src="assets/xp_gold_10_scatter.html" 
-        width="1000" 
-        height="500" 
-        frameborder="0">
-</iframe>
-
-#### **Distribution of Gold and XP Difference at 20 Minutes by Game Result**
-
-The plot below illustrates **how gold differences at 20 minutes vary depending on the final result of the match**:
-
-- It is clear that **teams with a greater lead in gold at 20 minutes have a much higher chance of winning the game**  
-- Winning teams tend to have significantly positive gold differences, while **losing teams cluster around negative values**  
-- Specifically, 50% of winning teams have **at least a 2571 gold** lead over their opponents at the 20-minute mark. This suggests that, on average, half of the winning teams have accumulated enough gold for **one additional item**, giving them a noticeable power spike over the losing team.  
-
-<iframe src="assets/gold_20_hist.html" 
-        width="800" 
-        height="500" 
-        frameborder="0">
-</iframe>
 
 ### **Interesting Aggregates**
 Table 1 shows the quantified differences in **win rate**, **first objective secured rate**, and **gold/XP difference** between the two sides (🔵 Blue vs 🔴 Red):
