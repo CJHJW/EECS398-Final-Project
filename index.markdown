@@ -175,8 +175,8 @@ The two plots below illustrate how gold and XP differences at 10 minutes vary ac
 
 - The violin plot shows that **the spread of XP differences narrows as game length increases**. This makes sense — longer matches tend to be more competitive, so the performance gap between the two teams is usually smaller early on.
 
-<iframe src="assets/10_violin.html" 
-        width="1000" 
+<iframe src="xp_gold_10_violin.html" 
+        width="900" 
         height="500" 
         frameborder="0">
 </iframe>
