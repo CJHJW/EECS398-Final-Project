@@ -236,15 +236,13 @@ The table below shows features description:
 
 The model uses 30% data as test data. One-hot encoding is applied to the nominal features using `OneHotEncoder(drop='first')` to avoid multicollinearity, and StandardScaler() is applied to ensure fair contribution in the logistic regression model.  
 
-Plots below shows model performance:
-
 The basic model has **0.8281** accuracy, and **0.88** AUC score.  
 
-The performance of the baseline model isn't perfect, but it is strong given its **simplicity**. The model uses only three features yet achieves an **accuracy of 0.8281** and an **AUC score of 0.88**, indicating that side selection, early objective control, and XP advantage are all strongly correlated with winning.  
+The performance of the baseline model isn't perfect, but it is strong given its **simplicity**. 
 
 However, there is still room for improvement:  
 - While 82.81% accuracy and 0.88 AUC socre is promising, it's likely that incorporating more in-game features could further boost performance.  
-- Using logistic regression might be too simple in this case. The model oversimplifies the true complexity. Also, logistic regression doesn't consider the correlation between features. For example, team taking the first baron might take a lead in xp or gold. Therefore, exploring more complex models could potentially improve classification performance.  
+- Using logistic regression might be too simple in this case. 
 
 ## **[Final Model](#table-of-contents)**
 
@@ -286,7 +284,7 @@ Below shows the comparison of three model's Accuracy. The final Logistic Regress
 
 Below shows the comparison of three model's AUC score. The final Logistic Regression model has the best performance on AUC score. 
 
-<img src="assets/all_confusion_matrices" alt="Accuracy" style="width:100%; max-width:1000px;">
+<img src="assets/all_confusion_matrices.png" alt="Accuracy" style="width:100%; max-width:1000px;">
 
 Logistic Regression model playing better than other two tree models suggests that:  
 - The relationship between features and target is mostly linear
