@@ -238,13 +238,7 @@ The model uses 30% data as test data. One-hot encoding is applied to the nominal
 
 Plots below shows model performance:
 
-The first plot shows the confusion matrix with **0.8281** accuracy.  
-
-<img src="assets/base_cm.png" alt="Confusion Matrix" style="width:100%; max-width:600px;">
-
-The second plot shows the ROC curve with **0.88** AUC score.  
-
-<img src="assets/base_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
+The basic model has **0.8281** accuracy, and **0.88** AUC score.  
 
 The performance of the baseline model isn't perfect, but it is strong given its **simplicity**. The model uses only three features yet achieves an **accuracy of 0.8281** and an **AUC score of 0.88**, indicating that side selection, early objective control, and XP advantage are all strongly correlated with winning.  
 
@@ -278,29 +272,21 @@ We use **GridSearchCV** to find the optimal tree depth for Random Forest and Dec
 
 ### **Models Performance**
 
-The **Logistic Regression** model performs **85.08** accuracy and **0.93** AUC. Below shows the confusion matrix and ROC curve:  
+The **Logistic Regression** model performs **85.08** accuracy and **0.93** AUC.  
 
-<img src="assets/final_logistic_cm.png" alt="Confusion Matrix" style="width:100%; max-width:600px;">
+The **Random Forest** model performs **84.98** accuracy and **0.92** AUC.  
 
-<img src="assets/final_logistic_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
-
-The **Random Forest** model performs **84.98** accuracy and **0.92** AUC. Below shows the confusion matrix and ROC curve:  
-
-<img src="assets/final_rf_cm.png" alt="Confusion Matrix" style="width:100%; max-width:600px;">
-
-<img src="assets/final_rf_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
-
-The **Decision Tree** model performs **83.75** accuracy and **0.91** AUC. Below shows the confusion matrix and ROC curve:  
-
-<img src="assets/final_dt_cm.png" alt="Confusion Matrix" style="width:100%; max-width:600px;">
-
-<img src="assets/final_dt_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
+The **Decision Tree** model performs **83.75** accuracy and **0.91** AUC.  
 
 ### **Models Comparison**
 
-Below shows the comparison of three model's AUC score. The final Logistic Regression model has the best performance not only on accuracy but also on AUC score. 
+Below shows the comparison of three model's Accuracy. The final Logistic Regression model has the best performance on accuracy. 
 
 <img src="assets/all_models_roc.png" alt="ROC curve" style="width:100%; max-width:600px;">
+
+Below shows the comparison of three model's AUC score. The final Logistic Regression model has the best performance on AUC score. 
+
+<img src="assets/all_confusion_matrices" alt="Accuracy" style="width:100%; max-width:1000px;">
 
 Logistic Regression model playing better than other two tree models suggests that:  
 - The relationship between features and target is mostly linear
