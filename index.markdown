@@ -299,21 +299,6 @@ Compared to the base logistic regression model, the final model demonstrates a n
 
 Overall, **85.08%** accuracy is not perfect for prediction model. But **0.93** AUC indicates excellent performance, with the model having a high ability to distinguish between classes. The final model now is more confident and accurate in ranking match outcomes.  
 
-### **Feature Importance**
-
-In the logistic regression model, after regularizing each variable, the feature coefficients become comparable. A positive coefficient increases the probability of winning, while a negative one decreases it. Moreover, the larger the absolute value of a coefficient, the greater its influence on the predicted probability. Therefore, we interpret feature importance based on the magnitude and sign of these coefficients.  
-
-Below shows each feature's importance for the base model and the final model:  
-
-<img src="assets/base_fi.png" alt="feature importance" style="width:100%; max-width:600px;">
-
-<img src="assets/final_fi.png" alt="feature importance" style="width:100%; max-width:600px;">
-
-**Base Model Feature Importance**:  The base model relies heavily on `firstbaron`, it lacks depth in understanding game trends over time, relying mainly on early or one-time events.  
-**Final Model Feature Importance**: The final model benefits from a richer set of engineered features, it captures not only early-game objectives but also trends over time (like XP and gold changes).  
-
-One surprising result from the logistic regression feature importance is the **minimal impact of the side feature on match outcome**. This contrasts with our earlier exploratory data analysis (EDA), where we observed noticeable performance differences between teams starting on the blue vs. red side.  
-
 ---
 
 Thanks for reading!  
