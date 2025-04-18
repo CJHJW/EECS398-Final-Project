@@ -288,8 +288,6 @@ Below shows the comparison of three model's Accuracy. The final Logistic Regress
 
 Below shows the comparison of three model's AUC score. The final Logistic Regression model has the best performance on AUC score. 
 
-<img src="assets/confusion_matrices.html" alt="Accuracy" style="width:100%; max-width:1000px;">
-
 <iframe src="assets/confusion_matrices.html"
         width="800" 
         height="750" 
