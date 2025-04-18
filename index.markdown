@@ -280,17 +280,17 @@ The **Decision Tree** model performs **83.75** accuracy and **0.91** AUC.
 
 Below shows the comparison of three model's Accuracy. The final Logistic Regression model has the best performance on accuracy. 
 
-<iframe src="assets/roc_curves.html"
-        width="1000" 
-        height="600" 
+<iframe src="assets/confusion_matrices.html"
+        width="800" 
+        height="750" 
         frameborder="0">
 </iframe>
 
 Below shows the comparison of three model's AUC score. The final Logistic Regression model has the best performance on AUC score. 
 
-<iframe src="assets/confusion_matrices.html"
-        width="800" 
-        height="750" 
+<iframe src="assets/roc_curves.html"
+        width="1000" 
+        height="600" 
         frameborder="0">
 </iframe>
 
